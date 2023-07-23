@@ -161,7 +161,7 @@ const checkEat = () => {
         audio.play()
         snake.push(head)
 
-        diff -= 10
+        diff < 120 ? diff -= 10 : diff -= 5
 
         countScore()
 
