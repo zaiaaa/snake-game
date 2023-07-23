@@ -6,6 +6,8 @@ const finalScore = document.getElementById('final-score')
 const menu = document.querySelector(".menu-screen")
 const buttonPlay = document.querySelector(".btn-play")
 
+const highScoreSpan = document.getElementById('highScoreSpan')
+
 
 const audio = new Audio('audio.mp3')
 
@@ -19,6 +21,9 @@ let snake = [
     {x: 270, y: 240},
     {x: 300, y: 240}
 ]
+
+let highScore = []
+
 
 const randomNumber = (min, max) => {
     return Math.round(Math.random() * (max - min) + min)
@@ -173,10 +178,10 @@ const gameOver = () => {
     finalScore.innerHTML = score
 
     canvas.style.filter = "blur(2px)"
-
 }
 
 const gameLoop = () => {
+
     clearInterval(loopId)
     
     ctx.clearRect(0, 0, 600, 600)
@@ -187,14 +192,12 @@ const gameLoop = () => {
     checkEat()
     checkCollision()
 
-
     loopId = setTimeout(() => {
         gameLoop()
     }, 200);
 }
 
 gameLoop()
-
 
 document.addEventListener('keydown', (event) => {
     //console.log(event.key)
@@ -227,6 +230,14 @@ document.addEventListener('keydown', (event) => {
 })
 
 buttonPlay.addEventListener('click', () => {
+    highScore.push(score)
+    
+    const newHighScore = highScore.reduce((prev, current) => {
+        return prev > current ? prev : current
+    })
+
+    highScoreSpan.innerHTML = newHighScore
+
     score = 0
     scoreValue.innerHTML = "00"
     menu.style.display = "none"

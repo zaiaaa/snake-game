@@ -8,7 +8,7 @@
 }
 body{
     background-color: #1f1f1f;
-    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,6 +18,26 @@ body{
 
 canvas{
     background-color: #111;
+}
+
+@media screen and (max-width: 1400px) {
+    canvas{
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 786px) {
+    canvas{
+        width: 350px;
+    }
+}
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .score{
@@ -66,6 +86,40 @@ canvas{
    justify-content: center;
    gap: 5px;
    cursor: pointer;
-
-
 } 
+
+.phoneButtons{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.phoneButtons button{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #000;
+    border: 1px solid white;
+}
+
+.phoneButtons button i{
+    font-size: 20px;
+    color: #fff;
+}
+
+.esquerda--direita{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: .25rem 0;
+}
+
+#baixo{
+    margin: auto;
+}
+
+#cima{
+    margin: auto;
+}

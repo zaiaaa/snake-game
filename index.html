@@ -10,22 +10,34 @@
 </head>
 <body>
     
-    <div class="score">score: <span class="score--value">00</span></div>
+    <div class="main">
+        <div class="score">score: <span class="score--value">00</span></div>
+        <div class="menu-screen">
+            <span class="game-over">game over</span>
+            <span class="final-score">score: <span id="final-score">00</span></span>
 
-    <div class="menu-screen">
-        <span class="game-over">game over</span>
-        <span class="final-score">score: <span id="final-score">00</span></span>
+            <button class="btn-play">
+                <span class="material-symbols-outlined">
+                    play_circle
+                </span>
+                Jogar novamente
+            </button>
+        </div>
 
-        <button class="btn-play">
-            <span class="material-symbols-outlined">
-                play_circle
-            </span>
-            Jogar novamente
-        </button>
+        <canvas width="600" height="600"></canvas>
+        <br>
+        <h3>High Score: <span id="highScoreSpan">0</span></h3>
+
+        <div class="phoneButtons">
+            <button id="cima" type="button"><i class="fa-solid fa-up-long"></i></button>
+                <div class="esquerda--direita">
+                    <button id="esquerda" type="button"><i class="fa-solid fa-left-long"></i></button>
+                    <button id="direita" type="button"><i class="fa-solid fa-right-long"></i></button>
+                </div>
+            <button id="baixo" type="button"><i class="fa-solid fa-down-long"></i></button>
+        </div>
     </div>
-
-    <canvas width="600" height="600"></canvas>
-
     <script src="index.js"></script>
+    <script src="https://kit.fontawesome.com/5dfb4ac132.js" crossorigin="anonymous"></script>
 </body>
 </html>
