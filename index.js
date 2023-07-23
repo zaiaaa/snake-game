@@ -8,6 +8,11 @@ const buttonPlay = document.querySelector(".btn-play")
 
 const highScoreSpan = document.getElementById('highScoreSpan')
 
+const esquerda = document.getElementById('esquerda')
+const direita = document.getElementById('direita')
+const cima = document.getElementById('cima')
+const baixo = document.getElementById('baixo')
+
 
 const audio = new Audio('audio.mp3')
 
@@ -53,6 +58,7 @@ const food = {
  
 let direction
 let loopId
+let diff = 200
 
 const drawSnake = () => {
     ctx.fillStyle = "#ddd"
@@ -65,6 +71,8 @@ const drawSnake = () => {
 }
 
 const moveSnake = () =>{
+    moveSnakeByPhone()
+    
     if(!direction) return
 
                     //pega o índice
@@ -86,6 +94,33 @@ const moveSnake = () =>{
     if(direction == "up"){
         snake.push({x: head.x, y: head.y - size})
     }
+}
+
+const moveSnakeByPhone = () => {
+    
+    esquerda.addEventListener('click', () => {
+        if(direction !== "right"){
+        direction = "left"
+    }
+    })
+
+    direita.addEventListener('click', () => {
+        if(direction !== "left"){
+            direction = "right"
+        }
+    })
+
+    cima.addEventListener('click', () => {
+        if(direction !== "down"){
+            direction = "up"
+        }
+    })
+
+    baixo.addEventListener('click', () => {
+        if(direction !== "up"){
+            direction = "down"
+        }
+    })
 }
 
 const drawGrid = () => {
@@ -125,7 +160,9 @@ const checkEat = () => {
         //h1.innerHTML = "comeui"
         audio.play()
         snake.push(head)
-        
+
+        diff -= 10
+
         countScore()
 
         //h1.innerHTML = `Score: ${score}`
@@ -194,7 +231,7 @@ const gameLoop = () => {
 
     loopId = setTimeout(() => {
         gameLoop()
-    }, 200);
+    }, diff);
 }
 
 gameLoop()
@@ -231,6 +268,7 @@ document.addEventListener('keydown', (event) => {
 
 buttonPlay.addEventListener('click', () => {
     highScore.push(score)
+    diff = 300
     
     const newHighScore = highScore.reduce((prev, current) => {
         return prev > current ? prev : current

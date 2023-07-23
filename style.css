@@ -20,19 +20,6 @@ canvas{
     background-color: #111;
 }
 
-@media screen and (max-width: 1400px) {
-    canvas{
-        width: 450px;
-    }
-}
-
-@media screen and (max-width: 786px) {
-    canvas{
-        width: 350px;
-    }
-}
-
-
 .main{
     display: flex;
     flex-direction: column;
@@ -90,7 +77,7 @@ canvas{
 
 .phoneButtons{
     width: 60%;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -123,3 +110,29 @@ canvas{
 #cima{
     margin: auto;
 }
+
+
+@media screen and (max-width: 1400px) {
+    body{
+        overflow-y: hidden;
+    }
+    canvas{
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 1030px) {
+    .phoneButtons{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 786px) {
+    canvas{
+        width: 350px;
+    }
+    .phoneButtons{
+        display: flex;
+    }
+}
+
